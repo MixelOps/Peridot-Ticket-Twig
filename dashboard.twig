@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard - Peridot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Peridot</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html" class="get-started">Logout</a>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <div class="dashboard-header">
+      <h1>Dashboard</h1>
+      
+    </div>
+
+    <div class="card add-ticket-card">
+      <h2>Add Ticket</h2>
+      <form class="add-ticket-form" onsubmit="event.preventDefault(); addTicket()">
+        <div class="add-ticket-row">
+          <input id="ticketTitle" type="text" placeholder="Ticket title" required />
+          <button class="btn primary" type="submit">Add</button>
+        </div>
+        <textarea id="ticketDesc" rows="3" placeholder="Ticket description"></textarea>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Your Tickets</h2>
+      <div id="ticketList" class="ticket-list"></div>
+    </div>
+  </div>
+
+  <script>
+    // simple client-side ticket list (local only)
+    function addTicket(){
+      const t = document.getElementById('ticketTitle').value.trim();
+      const d = document.getElementById('ticketDesc').value.trim();
+      if(!t) return alert('Enter title');
+      const list = document.getElementById('ticketList');
+      const item = document.createElement('div');
+      item.className = 'ticket';
+      item.innerHTML = '<div><div class="title">'+escapeHtml(t)+'</div><div class="desc">'+escapeHtml(d)+'</div></div><div><button onclick="this.parentElement.parentElement.remove()" class="delete-btn">Delete</button></div>';
+      list.prepend(item);
+      document.getElementById('ticketTitle').value='';
+      document.getElementById('ticketDesc').value='';
+    }
+    function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;') }
+  </script>
+</body>
+</html>

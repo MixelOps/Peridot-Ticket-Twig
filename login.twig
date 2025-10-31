@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Peridot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Peridot</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      
+    </div>
+  </nav>
+
+  <div class="auth-container">
+    <h2>Login</h2>
+    <p class="subtitle">Access your Peridot account</p>
+
+    <form onsubmit="event.preventDefault(); window.location.href='dashboard.html'">
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button class="submit-btn" type="submit">Login</button>
+    </form>
+
+    <div class="auth-switch">
+      Don't have an account? <a href="signup.html">Sign up</a>
+    </div>
+  </div>
+</body>
+</html>
